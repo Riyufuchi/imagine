@@ -71,6 +71,11 @@ INTERFACE_INCLUDE_DIRECTORIES ${GENERAL_LIB_DIR}/ConsoleArtLib/includes)
 endif()
 
 #
+# Qt
+#
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
+
+#
 # Application
 #
 file(MAKE_DIRECTORY build)
@@ -80,7 +85,9 @@ file(GLOB_RECURSE APP_SOURCES
 	${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
 )
 
-add_executable(QuidoArt ${APP_SOURCES})
+qt_standard_project_setup()
+
+qt_add_executable(QuidoArt ${APP_SOURCES})
 
 if (WIN32)
 	set_target_properties(QuidoArt PROPERTIES WIN32_EXECUTABLE OFF)
@@ -92,6 +99,8 @@ target_include_directories(QuidoArt PRIVATE
 	${CONSOLE_LIB_DIR}/inc
 )
 
+target_link_libraries(QuidoArt PRIVATE Qt6::Widgets)
+
 if (WIN32)
 	target_link_libraries(QuidoArt PRIVATE
 	ConsoleLib
@@ -102,6 +111,7 @@ else()
 	ConsoleLib
 	ConsoleArtLib
 )
+target_link_libraries(QuidoArt PRIVATE Qt6::Core Qt6::Widgets)
 endif()
 
 #

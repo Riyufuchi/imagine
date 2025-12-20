@@ -11,8 +11,11 @@
 #include <string.h>
 #include <map>
 
+#include <QApplication>
+
 #include "consoleArt/controller/ControllerCLI.h"
 #include "consoleArt/controller/ControllerTFD.h"
+#include"consoleArt/controller/ControllerQt.h"
 #include "consoleArt/tools/GeneralTools.hpp"
 #include "ConsoleUtils.h"
 #include "UnixConsole.h"
@@ -20,6 +23,7 @@
 #include "DefaultConsole.h"
 #include "ArgumentParser.h"
 #include "other/ScheduleTracker.h"
+#include "consoleArt/gui/qt/MainWindow.h"
 #ifdef _WIN32
 	#include "WindowsConsole.h"
 #endif // _WIN32
@@ -77,14 +81,20 @@ int main(int argc, char** argv)
 	#endif
 
 	consoleart::Controller* consoleArt;
+	bool isQt = false;
 
 	if (consolelib::ArgumentParser::remove(argPairs, "--noGUI"))
 	{
 		consoleArt = new consoleart::ControllerCLI(systemConsole);
 	}
-	else
+	else if (consolelib::ArgumentParser::remove(argPairs, "--tfd"))
 	{
 		consoleArt = new consoleart::ControllerTFD(systemConsole);
+	}
+	else
+	{
+		consoleArt = new consoleart::ControllerQt();
+		isQt = true;
 	}
 
 	if (consoleArt == nullptr)
@@ -102,6 +112,13 @@ int main(int argc, char** argv)
 	}
 	conf: consoleArt->configure(argPairs);
 	start: consoleArt->run();
+	if (isQt)
+	{
+		QApplication app(argc, argv);
+		consoleart::MainWindow window;
+		window.show();
+		app.exec();
+	}
 	delete consoleArt;
 	delete systemConsole;
 	return 0;
