@@ -1,4 +1,4 @@
-# QuidoArt
+# Imagine
 
 - [About](#about)
 - [Used libraries](#used-libraries)
@@ -31,8 +31,8 @@ Highlighted features:
 | :------: | :----------: | :---: |
 | [ConsoleLib](https://github.com/Riyufuchi/ConsoleLib) | Console stuff | ✅ |
 | [ConsoleArtLib](https://github.com/Riyufuchi/ConsoleArtLib) | Image tools | ✅ |
-| [tinyfiledialogs](http://tinyfiledialogs.sourceforge.net) | Crossplatform dialogs | ✅ |
 | [Qt](https://www.qt.io/development/application-development) | GUI | ❌ |
+| [SQLite](https://www.sqlite.org/) | Database | ✅ |
 
 ## Compilation
 
