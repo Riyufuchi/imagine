@@ -6,7 +6,7 @@
 // Description : This class is controller for a main app functionality
 //============================================================================
 
-#include "Controller.h"
+#include "controller.h"
 
 namespace consoleart
 {

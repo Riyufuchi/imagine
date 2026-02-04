@@ -13,10 +13,10 @@
 
 #include <QApplication>
 
-#include "consoleArt/tools/GeneralTools.hpp"
+#include "imagine/tools/GeneralTools.hpp"
 #include "ConsoleUtils.h"
 #include "ArgumentParser.h"
-#include "consoleArt/gui/qt/MainWindow.h"
+#include "imagine/qt/main_window.h"
 
 using ParsedArguments = consolelib::argVector;
 

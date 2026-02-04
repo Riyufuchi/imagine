@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QObject>
 
-#include "../../controller/ControllerQt.h"
+#include "../controller/controller_qt.h"
 
 namespace consoleart
 {

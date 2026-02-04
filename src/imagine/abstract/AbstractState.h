@@ -10,7 +10,7 @@
 #ifndef CONSOLEART_ABSTRACT_ABSTRACTSTATE_H_
 #define CONSOLEART_ABSTRACT_ABSTRACTSTATE_H_
 
-#include "../controller/Controller.h"
+#include "../controller/controller.h"
 
 namespace consoleart
 {

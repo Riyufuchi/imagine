@@ -1,7 +1,7 @@
 #ifndef CONTROLLERQT_H
 #define CONTROLLERQT_H
 
-#include "Controller.h"
+#include "controller.h"
 
 namespace consoleart
 {

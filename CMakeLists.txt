@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(QuidoArt LANGUAGES C CXX)
+project(Imagine LANGUAGES C CXX)
 
 #
 # C++ Standard
@@ -87,14 +87,14 @@ file(GLOB_RECURSE APP_SOURCES
 
 qt_standard_project_setup()
 
-qt_add_executable(QuidoArt ${APP_SOURCES})
+qt_add_executable(imagine ${APP_SOURCES})
 
 # Link everything
-target_include_directories(QuidoArt PRIVATE ${CONSOLE_LIB_DIR}/inc)
-target_include_directories(QuidoArt PRIVATE ${GENERAL_LIB_DIR}/ConsoleArtLib/includes)
+target_include_directories(imagine PRIVATE ${CONSOLE_LIB_DIR}/inc)
+target_include_directories(imagine PRIVATE ${GENERAL_LIB_DIR}/ConsoleArtLib/includes)
 
-target_link_libraries(QuidoArt PRIVATE ConsoleArtLib ConsoleLib)
-target_link_libraries(QuidoArt PRIVATE Qt6::Core Qt6::Widgets)
+target_link_libraries(imagine PRIVATE ConsoleArtLib ConsoleLib)
+target_link_libraries(imagine PRIVATE Qt6::Core Qt6::Widgets)
 
 #
 # Documentation

@@ -1,4 +1,4 @@
-#include "ControllerQt.h"
+#include "controller_qt.h"
 
 namespace consoleart
 {
