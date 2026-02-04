@@ -8,7 +8,7 @@
 
 ## About
 
-This is version that uses Qt framework for gui instead of SDL2 as in original ConsoleArt project. 
+This is version that uses Qt framework for gui instead of SDL2 as in original ConsoleArt project and brings new features.
 
 ### Features
 
@@ -16,6 +16,7 @@ This application works with images and supports even multi-page and animated one
 
 Highlighted features:
 
+* Save and search images from database
 * Pack images into .dcx
 * Convert images to ascii
 * Apply some filters
