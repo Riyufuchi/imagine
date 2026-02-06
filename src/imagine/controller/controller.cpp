@@ -42,7 +42,7 @@ Controller::Controller(std::string path, AbstractNotifier* notifier, IMenu* menu
 	{
 		loadAllImagesAsync();
 		for (const VectorData& image : images)
-			consoleartlib::SimpleEdit::removeGrayFromTexture(*image.imageUptr.get());
+			consoleartlib::simple_edit::removeGrayFromTexture(*image.imageUptr.get());
 		isRunnable = false;
 	};
 	argumentMethods["--splitGIF"] = [&](const auto& vector)
@@ -67,7 +67,7 @@ Controller::Controller(std::string path, AbstractNotifier* notifier, IMenu* menu
 			if (baseLayer == nullptr || !baseLayer->isLoaded())
 				return;
 			for (const VectorData& image : images)
-				consoleartlib::SimpleEdit::overlayTextures(*baseLayer, *image.imageUptr.get());
+				consoleartlib::simple_edit::overlayTextures(*baseLayer, *image.imageUptr.get());
 			delete baseLayer;
 		}
 		isRunnable = false;

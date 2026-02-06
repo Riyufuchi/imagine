@@ -10,8 +10,8 @@
 #ifndef CONSOLEART_INTERFACES_IMENU_HPP_
 #define CONSOLEART_INTERFACES_IMENU_HPP_
 
-#include "images/base/Image.h"
-#include "ColorUtils.h"
+#include "consoleartlib/images/base/image.h"
+#include "consolelib/tools/color_tools.h"
 
 namespace consoleart
 {

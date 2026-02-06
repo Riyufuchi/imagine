@@ -20,13 +20,13 @@
 #include <memory>
 
 // consolelib
-#include "ArgumentParser.h"
-#include "Output.hpp"
-//Image utils
-#include "imageTools/AsciiConverter.h"
-#include "imageTools/SimpleEdit.h"
+#include "consolelib/tools/argument_parser.h"
+#include "consolelib/output.hpp"
+// console_art_lib
+#include "consoleartlib/image_tools/ascii_converter.h"
+#include "consoleartlib/image_tools/simple_edit.h"
+#include "consoleartlib/image_formats.hpp"
 //
-#include "ImageFormats.hpp"
 #include "../interfaces/IMenu.hpp"
 #include "../tools/GeneralTools.hpp"
 #include "../abstract/AbstractNotifier.h"

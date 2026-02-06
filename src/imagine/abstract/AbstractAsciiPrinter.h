@@ -12,7 +12,7 @@
 
 #include <string>
 
-#include "imageTools/AsciiConverter.h"
+#include "consoleartlib/image_tools/ascii_converter.h"
 
 namespace consoleart
 {

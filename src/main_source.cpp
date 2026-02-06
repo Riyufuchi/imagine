@@ -14,8 +14,8 @@
 #include <QApplication>
 
 #include "imagine/tools/GeneralTools.hpp"
-#include "ConsoleUtils.h"
-#include "ArgumentParser.h"
+#include "consolelib/tools/console_tools.h"
+#include "consolelib/tools/argument_parser.h"
 #include "imagine/qt/main_window.h"
 
 using ParsedArguments = consolelib::argVector;
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 {
 	bool success = true;
 	std::string resultMsg = "";
-	ParsedArguments argPairs = consolelib::ArgumentParser::analyzeInOrder(argc, argv, success, resultMsg);
+	ParsedArguments argPairs = consolelib::ArgumentParser::analyze_in_order(argc, argv, success, resultMsg);
 	if (!success)
 	{
 		std::cerr << resultMsg << "\n";
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 	}
 
 	start: QApplication app(argc, argv);
-	consoleart::MainWindow window;
+	imagine::MainWindow window;
 	window.show();
 	return app.exec();
 }

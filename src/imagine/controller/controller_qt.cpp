@@ -1,28 +1,24 @@
 #include "controller_qt.h"
 
-namespace consoleart
-{
-
-ControllerQt::ControllerQt() : Controller(nullptr, nullptr, nullptr)
+imagine::ControllerQt::ControllerQt() : Controller(nullptr, nullptr, nullptr)
 {}
 
 
-Controller::IndexDataType consoleart::ControllerQt::selectImageMenu()
+consoleart::Controller::IndexDataType imagine::ControllerQt::selectImageMenu()
 {
 	return 0;
 }
 
-void ControllerQt::showAboutApplicationInfo()
+void imagine::ControllerQt::showAboutApplicationInfo()
 {
 }
 
-void ControllerQt::run()
+void imagine::ControllerQt::run()
 {
 }
 
-std::string ControllerQt::inputImageName()
+std::string imagine::ControllerQt::inputImageName()
 {
 	return "";
 }
 
-}

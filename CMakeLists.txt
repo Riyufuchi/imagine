@@ -43,31 +43,41 @@ endif()
 #
 # PREBUILT STATIC LIBRARIES
 #
-set(GENERAL_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs)
 
-set(CONSOLE_LIB_DIR ${GENERAL_LIB_DIR}/ConsoleLib)
+#
+# ConsoleLib
+#
+set(CONSOLE_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/ConsoleLib)
 
 # Create an IMPORTED target for the .a file
 add_library(ConsoleLib STATIC IMPORTED)
+
+# Point the IMPORTED target to the actual file
+# Windows binary is compiled using mingw g++
+if (WIN32)
+	set_target_properties(ConsoleLib PROPERTIES
+	IMPORTED_LOCATION ${CONSOLE_LIB_DIR}/windows/libConsoleLib.a
+	INTERFACE_INCLUDE_DIRECTORIES ${CONSOLE_LIB_DIR})
+else()
+	set_target_properties(ConsoleLib PROPERTIES
+	IMPORTED_LOCATION ${CONSOLE_LIB_DIR}/linux/libConsoleLib.a
+	INTERFACE_INCLUDE_DIRECTORIES ${CONSOLE_LIB_DIR})
+endif()
+
+#
+# ConsoleArtLib
+#
 add_library(ConsoleArtLib STATIC IMPORTED)
+
+set(CONSOLE_ART_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/ConsoleArtLib)
 
 # Point the IMPORTED target to the actual file
 if (WIN32)
-	set_target_properties(ConsoleLib PROPERTIES
-	IMPORTED_LOCATION ${CONSOLE_LIB_DIR}/ConsoleLib.lib
-	INTERFACE_INCLUDE_DIRECTORIES ${CONSOLE_LIB_DIR}/inc)
 
-	set_target_properties(ConsoleArtLib PROPERTIES
-	IMPORTED_LOCATION ${GENERAL_LIB_DIR}/ConsoleArtLib/ConsoleArtLib.lib
-	INTERFACE_INCLUDE_DIRECTORIES ${GENERAL_LIB_DIR}/ConsoleArtLib/includes)
 else()
-	set_target_properties(ConsoleLib PROPERTIES
-	IMPORTED_LOCATION ${CONSOLE_LIB_DIR}/libConsoleLib.a
-	INTERFACE_INCLUDE_DIRECTORIES ${CONSOLE_LIB_DIR}/inc)
-
-set_target_properties(ConsoleArtLib PROPERTIES
-IMPORTED_LOCATION ${GENERAL_LIB_DIR}/ConsoleArtLib/libConsoleArtLib.a
-INTERFACE_INCLUDE_DIRECTORIES ${GENERAL_LIB_DIR}/ConsoleArtLib/includes)
+	set_target_properties(ConsoleArtLib PROPERTIES
+	IMPORTED_LOCATION ${CONSOLE_ART_LIB_DIR}/linux/libConsoleArtLib.a
+	INTERFACE_INCLUDE_DIRECTORIES ${CONSOLE_ART_LIB_DIR})
 endif()
 
 #

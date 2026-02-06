@@ -2,7 +2,7 @@
 // File       : GeneralTools.hpp
 // Author     : riyufuchi
 // Created on : Nov 23, 2023
-// Last edit  : Nov 30, 2025
+// Last edit  : Feb 04, 2026
 // Copyright  : Copyright (c) Riyufuchi
 // Description: consoleart
 //==============================================================================
@@ -10,11 +10,11 @@
 #ifndef _CONSOLE_ART_GENERAL_TOOLS_HPP_
 #define _CONSOLE_ART_GENERAL_TOOLS_HPP_
 
-#include <ConsoleLib.h>
 #include <iostream>
 #include <string>
 
-#include "ConsoleUtils.h"
+#include "consolelib/console_lib.h"
+#include "consolelib/tools/console_tools.h"
 
 #define _COPYRIGHT_HEADER "Riyufuchi (c) 2020 - 2025\n"
 
@@ -50,18 +50,18 @@ public:
 			"--library| Shows info about ConsoleLib and other used libraries besides standard and platform depended",
 			"--compare [image1] [image2]| Compare dimensions of the two given images",
 		};
-		consolelib::ConsoleUtils::createManual(args, sizeof(args)/sizeof(args[0]));
+		consolelib::console_tools::create_manual(args, sizeof(args)/sizeof(args[0]));
 	}
 	static std::string usedLibraries()
 	{
 		std::stringstream info;
-		info << "Used libraries:\n" << consolelib::ConsoleLib::aboutLibrary();
+		info << "Used libraries:\n" << consolelib::aboutLibrary();
 		std::string libs[] = {
 			"Name| Used for",
 			"stb| Complex images",
 			"Qt| GUI",
 		};
-		info << "\n" << consolelib::ConsoleUtils::createTable(libs, sizeof(libs)/sizeof(libs[0]));
+		info << "\n" << consolelib::console_tools::create_table(libs, sizeof(libs)/sizeof(libs[0]));
 		return info.str();
 	}
 	static std::string aboutApplication()
@@ -90,7 +90,7 @@ public:
 					"GIF| 24; first frame only",
 					"HDR| 24, 32; basic implementation"
 				};
-		aboutStringStream << consolelib::ConsoleUtils::createTable(args, sizeof(args)/sizeof(args[0])) << "\n";
+		aboutStringStream << consolelib::console_tools::create_table(args, sizeof(args)/sizeof(args[0])) << "\n";
 		aboutStringStream << usedLibraries();
 		return aboutStringStream.str();
 	}

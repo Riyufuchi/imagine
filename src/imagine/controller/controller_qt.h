@@ -3,10 +3,10 @@
 
 #include "controller.h"
 
-namespace consoleart
+namespace imagine
 {
 
-class ControllerQt : public Controller
+class ControllerQt : public consoleart::Controller
 {
 public:
 	ControllerQt();

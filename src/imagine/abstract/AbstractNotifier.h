@@ -10,11 +10,11 @@
 #ifndef _CONSOLE_ART_CLI_CONSOLEM_ESSENGER_H_
 #define _CONSOLE_ART_CLI_CONSOLEM_ESSENGER_H_
 
-#include "ColorUtils.h"
-#include "ConsoleUtils.h"
-#include "UnixConsole.h"
-#include "DefaultConsole.h"
-#include "images/base/Image.h"
+#include "consolelib/tools/color_tools.h"
+#include "consolelib/tools/console_tools.h"
+#include "consolelib/consoles.hpp"
+//
+#include "consoleartlib/images/base/image.h"
 
 namespace consoleart
 {

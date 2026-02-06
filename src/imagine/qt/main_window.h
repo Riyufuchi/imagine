@@ -6,7 +6,7 @@
 
 #include "../controller/controller_qt.h"
 
-namespace consoleart
+namespace imagine
 {
 
 class MainWindow : public QMainWindow
