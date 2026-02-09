@@ -2,12 +2,12 @@
 // File       : AbstractAsciiPrinter.cpp
 // Author     : riyufuchi
 // Created on : Feb 25, 2025
-// Last edit  : Feb 25, 2025
+// Last edit  : Feb 09, 2026
 // Copyright  : Copyright (c) 2025, riyufuchi
 // Description: consoleart
 //==============================================================================
 
-#include "AbstractAsciiPrinter.h"
+#include "abstract_ascii_printer.h"
 
 namespace consoleart
 {

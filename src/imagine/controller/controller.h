@@ -28,11 +28,10 @@
 #include "consoleartlib/image_formats.hpp"
 //
 #include "../interfaces/IMenu.hpp"
-#include "../tools/GeneralTools.hpp"
-#include "../abstract/AbstractNotifier.h"
+#include "../tools/general_tools.hpp"
+#include "../abstract/abstract_notifier.h"
 #include "../interfaces/IMenu.hpp"
-#include "../abstract/AbstractAsciiPrinter.h"
-
+#include "../abstract/abstract_ascii_printer.h"
 namespace consoleart
 {
 class Controller

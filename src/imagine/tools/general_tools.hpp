@@ -19,7 +19,7 @@
 #define _COPYRIGHT_HEADER "Riyufuchi (c) 2020 - 2025\n"
 
 #define _APP_NAME "Imagine"
-#define _APP_VERSION "0.2 - Alpha"
+#define _APP_VERSION "0.3 - Alpha"
 
 #ifdef DEBUG
 	#define _CONSOLE_ART_VERSION _APP_NAME " v" _APP_VERSION " (debug)"

@@ -113,7 +113,7 @@ void Controller::configure(consolelib::argVector& config)
 		if (it != argumentMethods.end())
 			it->second(argument.second);
 		else
-			messenger->messageUser(AbstractNotifier::MessageType::PROBLEM, "Invalid argument [" + argument.first + "]\n");
+			messenger->message_user(AbstractNotifier::MessageType::PROBLEM, "Invalid argument [" + argument.first + "]\n");
 	}
 }
 
@@ -126,7 +126,7 @@ void Controller::configure(consolelib::argMap& config)
 		if (it != argumentMethods.end())
 			it->second(argument.second);
 		else
-			messenger->messageUser(AbstractNotifier::MessageType::PROBLEM, "Invalid argument [" + argument.first + "]\n");
+			messenger->message_user(AbstractNotifier::MessageType::PROBLEM, "Invalid argument [" + argument.first + "]\n");
 	}
 }
 
@@ -138,13 +138,13 @@ void Controller::convertImage(consoleartlib::Image* image, consoleartlib::AsciiC
 	if (charSet == consoleartlib::AsciiConverter::CHAR_SETS::CHAR_SETS_COUNT)
 		return;
 	ac.setCharSet(charSet);
-	messenger->messageUser(AbstractNotifier::MessageType::NOTIFICATION, std::string("Started conversion of image: ").append(image->getFilename()));
+	messenger->message_user(AbstractNotifier::MessageType::NOTIFICATION, std::string("Started conversion of image: ").append(image->getFilename()));
 	if (!ac.convertToASCII())
 	{
-		messenger->messageUser(AbstractNotifier::MessageType::PROBLEM, "Image conversion has failed!\n");
+		messenger->message_user(AbstractNotifier::MessageType::PROBLEM, "Image conversion has failed!\n");
 		return;
 	}
-	messenger->messageUser(AbstractNotifier::MessageType::SUCCESFUL_TASK, "Conversion to ascii done!\n");
+	messenger->message_user(AbstractNotifier::MessageType::SUCCESFUL_TASK, "Conversion to ascii done!\n");
 	abstractAsciiPrinter->setTarget(&ac);
 	abstractAsciiPrinter->printToFile();
 }
@@ -166,12 +166,12 @@ void Controller::loadAllImagesAsync()
 	}
 	catch (std::runtime_error& e)
 	{
-		messenger->messageUser(AbstractNotifier::MessageType::EXCEPTION, std::string(e.what()).append("\n"));
+		messenger->message_user(AbstractNotifier::MessageType::EXCEPTION, std::string(e.what()).append("\n"));
 		return;
 	}
 	std::lock_guard<std::mutex> lock(mutexImages);
 	std::sort(images.begin(), images.end());
-	messenger->messageUser(AbstractNotifier::MessageType::SUCCESFUL_TASK, "All loaded!\n");
+	messenger->message_user(AbstractNotifier::MessageType::SUCCESFUL_TASK, "All loaded!\n");
 }
 
 Controller::IndexDataType Controller::addImageAsync(consoleartlib::Image* image)
@@ -181,7 +181,7 @@ Controller::IndexDataType Controller::addImageAsync(consoleartlib::Image* image)
 		return 0;
 	if (!image->isLoaded())
 	{
-		messenger->messageUser(AbstractNotifier::MessageType::PROBLEM, image->getFileStatus() + "\n");
+		messenger->message_user(AbstractNotifier::MessageType::PROBLEM, image->getFileStatus() + "\n");
 		delete image;
 		image = nullptr;
 		return 0;
@@ -213,7 +213,7 @@ consoleartlib::Image* Controller::loadImageAsync(const std::string& path)
 	}
 	catch (std::exception& e)
 	{
-		messenger->messageUser(AbstractNotifier::MessageType::EXCEPTION, std::string(e.what()).append("\n"));
+		messenger->message_user(AbstractNotifier::MessageType::EXCEPTION, std::string(e.what()).append("\n"));
 		return nullptr;
 	}
 	std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
@@ -237,14 +237,14 @@ consoleartlib::Image* Controller::loadImageAsync(const std::string& path, const 
 			case consoleartlib::ImageType::DCX: return new consoleartlib::ImageDCX(path);
 			default: return nullptr;
 		}
-	messenger->messageUser(AbstractNotifier::MessageType::WARNING, "Unsupported format [" + extension + "]\n");
+	messenger->message_user(AbstractNotifier::MessageType::WARNING, "Unsupported format [" + extension + "]\n");
 	return nullptr;
 }
 
 void Controller::notifyUser(AbstractNotifier::MessageType messageType, const std::string& message)
 {
 	if (messenger)
-		messenger->messageUser(messageType, message);
+		messenger->message_user(messageType, message);
 	else
 		std::cout << message;
 }
@@ -252,7 +252,7 @@ void Controller::notifyUser(AbstractNotifier::MessageType messageType, const std
 void Controller::displayImageInfo(const consoleartlib::Image& image)
 {
 	if (messenger)
-		messenger->displayImageInfo(image);
+		messenger->display_image_info(image);
 	else
 		std::cout << image;
 }
@@ -264,7 +264,7 @@ void Controller::setWorkspace(std::string path)
 	if ((path.length() > 0) && (path.substr(path.length() - 1) != "/"))
 		path.append("/");
 	workspacePath = path;
-	messenger->messageUser(AbstractNotifier::MessageType::INFO, "Workspace path: " + workspacePath + "\n");
+	messenger->message_user(AbstractNotifier::MessageType::INFO, "Workspace path: " + workspacePath + "\n");
 }
 
 void Controller::setNotifier(AbstractNotifier* notifier)

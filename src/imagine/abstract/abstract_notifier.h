@@ -1,8 +1,8 @@
 //==============================================================================
-// File       : Messenger.h
+// File       : abstract_notifier.h
 // Author     : Riyufuchi
 // Created on : Apr 28, 2024
-// Last edit  : Nov 19, 2025
+// Last edit  : Feb 09, 2026
 // Copyright  : Copyright (c) 2024, Riyufuchi
 // Description: consoleart
 //==============================================================================
@@ -34,9 +34,9 @@ public:
 public:
 	AbstractNotifier();
 	virtual ~AbstractNotifier();
-	void messageUser(const std::string& message);
-	virtual void messageUser(MessageType messageSeverity, const std::string& message) = 0;
-	virtual void displayImageInfo(const consoleartlib::Image& image) = 0;
+	virtual void message_user(const std::string& message) final;
+	virtual void message_user(MessageType messageSeverity, const std::string& message) = 0;
+	virtual void display_image_info(const consoleartlib::Image& image) = 0;
 };
 } /* namespace consoleart */
 #endif /* CONSOLEART_CLI_CONSOLEMESSENGER_H_ */

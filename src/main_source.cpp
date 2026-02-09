@@ -13,7 +13,7 @@
 
 #include <QApplication>
 
-#include "imagine/tools/GeneralTools.hpp"
+#include "imagine/tools/general_tools.hpp"
 #include "consolelib/tools/console_tools.h"
 #include "consolelib/tools/argument_parser.h"
 #include "imagine/qt/main_window.h"
