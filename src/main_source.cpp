@@ -1,8 +1,8 @@
 //============================================================================
-// Name        : MainSource.cpp
+// Name        : main_source.cpp
 // Author      : Riyufuchi
 // Created on  : Jul 13, 2020
-// Last Edit   : Dec 04, 2025
+// Last Edit   : Feb 09, 2026
 // Description : This is programs main
 //============================================================================
 
@@ -29,9 +29,9 @@ enum BootAction
 	LIBRARY
 };
 
-BootAction checkArgs(ParsedArguments& argPairs);
+BootAction check_arguments(ParsedArguments& arg_pairs);
 
-BootAction abortQuidoArtLaunch()
+BootAction abort_application_launch()
 {
 	std::cerr << "Unrecognized action. Aborting!\n";
 	return BootAction::ABORT;
@@ -40,15 +40,15 @@ BootAction abortQuidoArtLaunch()
 int main(int argc, char** argv)
 {
 	bool success = true;
-	std::string resultMsg = "";
-	ParsedArguments argPairs = consolelib::ArgumentParser::analyze_in_order(argc, argv, success, resultMsg);
+	std::string result_message = "";
+	ParsedArguments arg_pairs = consolelib::ArgumentParser::analyze_in_order(argc, argv, success, result_message);
 	if (!success)
 	{
-		std::cerr << resultMsg << "\n";
+		std::cerr << result_message << "\n";
 		return 1;
 	}
 
-	switch (checkArgs(argPairs))
+	switch (check_arguments(arg_pairs))
 	{
 		case ABORT: return 1;
 		case CONTINUE: goto start;
@@ -61,28 +61,27 @@ int main(int argc, char** argv)
 	return app.exec();
 }
 
-BootAction checkArgs(ParsedArguments& argPairs)
+BootAction check_arguments(ParsedArguments& arg_pairs)
 {
-	if (argPairs.empty())
+	if (arg_pairs.empty())
 		return BootAction::CONTINUE;
 
-	const std::vector<std::pair<std::string, BootAction>> checkFor = {
+	const std::vector<std::pair<std::string, BootAction>> check_for_args = {
 		{"--man", BootAction::DISPLAY_MANUAL},
 		{"--help", BootAction::DISPLAY_MANUAL},
 		{"--about", BootAction::ABOUT},
 		{"--library", BootAction::LIBRARY}
 	};
 
-	for (std::pair<std::string, BootAction> arg : checkFor)
+	for (std::pair<std::string, BootAction> arg : check_for_args)
 	{
-		//if (argPairs.contains(arg.first))
-		if (consolelib::ArgumentParser::contains(argPairs, arg.first))
+		if (consolelib::ArgumentParser::contains(arg_pairs, arg.first))
 			switch (arg.second)
 			{
 				case DISPLAY_MANUAL: consoleart::general_tools::create_manual(); return arg.second;
 				case ABOUT: std::cout << consoleart::general_tools::about_application() << "\n"; return arg.second;
 				case LIBRARY: std::cout << consoleart::general_tools::used_libraries() << "\n"; return arg.second;
-				default: abortQuidoArtLaunch();
+				default: abort_application_launch();
 			}
 	}
 
