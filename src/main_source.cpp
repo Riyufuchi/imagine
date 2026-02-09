@@ -79,9 +79,9 @@ BootAction checkArgs(ParsedArguments& argPairs)
 		if (consolelib::ArgumentParser::contains(argPairs, arg.first))
 			switch (arg.second)
 			{
-				case DISPLAY_MANUAL: consoleart::GeneralTools::createManual(); return arg.second;
-				case ABOUT: std::cout << consoleart::GeneralTools::aboutApplication() << "\n"; return arg.second;
-				case LIBRARY: std::cout << consoleart::GeneralTools::usedLibraries() << "\n"; return arg.second;
+				case DISPLAY_MANUAL: consoleart::general_tools::create_manual(); return arg.second;
+				case ABOUT: std::cout << consoleart::general_tools::about_application() << "\n"; return arg.second;
+				case LIBRARY: std::cout << consoleart::general_tools::used_libraries() << "\n"; return arg.second;
 				default: abortQuidoArtLaunch();
 			}
 	}

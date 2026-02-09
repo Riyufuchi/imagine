@@ -97,7 +97,9 @@ file(GLOB_RECURSE APP_SOURCES
 
 qt_standard_project_setup()
 
-qt_add_executable(imagine ${APP_SOURCES})
+set(CMAKE_AUTORCC ON)
+
+qt_add_executable(imagine ${APP_SOURCES} resource.qrc)
 
 # Link everything
 target_include_directories(imagine PRIVATE ${CONSOLE_LIB_DIR}/inc)
